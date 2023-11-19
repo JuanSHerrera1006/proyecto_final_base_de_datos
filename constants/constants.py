@@ -1,0 +1,3 @@
+QUERY_TABLE_CLIENT = """
+CREATE TABLE IF NOT EXISTS cliente()
+"""

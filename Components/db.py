@@ -6,7 +6,6 @@ import datetime as dt
 
 
 def create_db(db_name,db_path):
-
   try:
       # Create connection to sqlite3
       conn = sqlite3.connect(os.path.join(db_path,db_name))
