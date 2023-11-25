@@ -12,14 +12,12 @@ db_path='DB'
 
 # Variables
 
-db_name = 'presupuesto.db'
+db_name = 'sales.db'
 
 # Execution
 if __name__ == '__main__':
-    # Read the data from the csv file
-    i=3
-    df = pd.read_excel(os.path.join(data_path, 'gastos_info.xlsx'))
+    df = pd.read_excel(os.path.join(data_path, 'sales_dataset_golden.xlsx'))
     # Create the data warehouse
     db.create_db(db_name,db_path)
     # Insert the data into the data warehouse
-    load.insert_data(df,db_name, db_path,i)
+    load.insert_data(df,db_name, db_path)

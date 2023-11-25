@@ -3,6 +3,7 @@ import os
 import sqlite3
 import traceback
 import datetime as dt
+from constants import constants
 
 
 def create_db(db_name,db_path):
@@ -11,34 +12,12 @@ def create_db(db_name,db_path):
       conn = sqlite3.connect(os.path.join(db_path,db_name))
       cursor = conn.cursor()
       # Creation of tables
-      cursor.execute("""CREATE TABLE IF NOT EXISTS Dim_Fecha(
-          fecha TIMESTAMP PRIMARY KEY,
-          year INTEGER,
-          month INTEGER,
-          day INTEGER)""")
-      cursor.execute("""CREATE TABLE IF NOT EXISTS Dim_Integrante(
-          id_integrante INTEGER PRIMARY KEY AUTOINCREMENT,
-          descripcion_integrante TEXT)""")
-      cursor.execute("""CREATE TABLE IF NOT EXISTS Fct_Gastos(
-          id_gasto INTEGER PRIMARY KEY AUTOINCREMENT,
-          fecha TEXT,
-          id_integrante INTEGER,
-          flujo_casa_mes TEXT,
-          valor INTEGER,
-          forma_de_pago TEXT,
-          nombre_categoria TEXT,
-          FOREIGN KEY (id_integrante) REFERENCES Dim_Integrante(id_integrante),
-          FOREIGN KEY (fecha) REFERENCES Dim_Fecha(fecha))""")
-      cursor.execute("""CREATE TABLE IF NOT EXISTS Fct_Ingresos(
-          id_ingreso INTEGER PRIMARY KEY AUTOINCREMENT,
-          fecha TEXT,
-          id_integrante INTEGER,
-          flujo_casa_mes TEXT,
-          valor INTEGER,
-          forma_de_pago TEXT,
-          nombre_categoria TEXT,
-          FOREIGN KEY (id_integrante) REFERENCES Dim_Integrante(id_integrante),
-          FOREIGN KEY (fecha) REFERENCES Dim_Fecha(fecha))""")
+      cursor.execute(constants.QUERY_TABLE_TIPO_TIENDA)
+      cursor.execute(constants.QUERY_TABLE_BARRIO)
+      cursor.execute(constants.QUERY_TABLE_TIPO_DOCUMENTO)
+      cursor.execute(constants.QUERY_TABLE_CLIENTE)
+      cursor.execute(constants.QUERY_TABLE_TIENDA)
+      cursor.execute(constants.QUERY_TABLE_COMPRA)
       # Close connection
       conn.commit()
       conn.close()
