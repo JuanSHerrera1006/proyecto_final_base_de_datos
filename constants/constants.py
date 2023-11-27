@@ -1,3 +1,7 @@
+"""
+This file contains the SQL queries and dictionary constants used in the database schema creation and data insertion.
+"""
+
 DICT_TIPO_TIENDA = {
     'Tienda especializada': 1,
     'Tienda Outlet': 2,
@@ -6,8 +10,6 @@ DICT_TIPO_TIENDA = {
     'Minimercado': 5,
     'Tienda Regional': 6
 }
-
-
 
 QUERY_TABLE_TIPO_DOCUMENTO = """
 CREATE TABLE IF NOT EXISTS tipo_documento(

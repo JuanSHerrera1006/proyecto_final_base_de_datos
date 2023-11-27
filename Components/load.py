@@ -5,6 +5,17 @@ import sqlite3
 import traceback
 
 def insert_data(df_file,db_name,db_path):
+    """
+    Inserts data from a DataFrame into a SQLite database.
+
+    Parameters:
+    - df_file (pandas.DataFrame): The DataFrame containing the data to be inserted.
+    - db_name (str): The name of the SQLite database.
+    - db_path (str): The path to the directory where the SQLite database is located.
+
+    Returns:
+    None
+    """
     try:
         if os.path.exists(os.path.join(db_path, db_name)):
             conn = sqlite3.connect(os.path.join(db_path, db_name))
